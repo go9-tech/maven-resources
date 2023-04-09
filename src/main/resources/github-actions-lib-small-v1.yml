@@ -1,0 +1,14 @@
+name: Build
+
+on:
+  push:
+    branches: [ "develop" ]
+
+jobs:
+  build:
+    runs-on: go9tech/ci-v1:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build
+        run: /opt/pipelines/build.sh

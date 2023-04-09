@@ -1,0 +1,18 @@
+image: go9tech/ci-v1:latest
+
+pipelines:
+  default:
+    - step:
+        name: Build
+        caches:
+          - maven
+          - docker
+        script:
+          - /opt/pipelines/build.sh
+        services:
+          - docker
+
+definitions:
+  services:
+    docker:
+      memory: 2048

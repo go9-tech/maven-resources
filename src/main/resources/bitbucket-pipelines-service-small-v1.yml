@@ -1,0 +1,83 @@
+image: go9tech/ci-vi:latest
+
+pipelines:
+  default:
+    - step:
+        name: Build
+        caches:
+          - maven
+          - docker
+        script:
+          - /opt/pipelines/build.sh
+        services:
+          - docker
+  branches:
+    develop:
+      - step:
+          name: Build
+          caches:
+            - maven
+            - docker
+          script:
+            - /opt/pipelines/build.sh
+          services:
+            - docker
+      - step:
+          name: Deploy to DEV
+          deployment: test
+          trigger: automatic
+          script:
+            - /opt/pipelines/deploy.sh
+    release/*:
+      - step:
+          name: Build
+          caches:
+            - maven
+            - docker
+          script:
+            - /opt/pipelines/build.sh
+          services:
+            - docker
+      - step:
+          name: Deploy to UAT
+          deployment: staging
+          trigger: automatic
+          script:
+            - /opt/pipelines/deploy.sh
+    hotfix/*:
+      - step:
+          name: Build
+          caches:
+            - maven
+            - docker
+          script:
+            - /opt/pipelines/build.sh
+          services:
+            - docker
+      - step:
+          name: Deploy to FIX
+          deployment: staging
+          trigger: automatic
+          script:
+            - /opt/pipelines/deploy.sh
+    master:
+      - step:
+          name: Build
+          caches:
+            - maven
+            - docker
+          script:
+            - /opt/pipelines/build.sh
+          services:
+            - docker
+      - step:
+          name: Deploy to PRD
+          deployment: production
+          trigger: manual
+          script:
+            - /opt/pipelines/deploy.sh
+
+definitions:
+  services:
+    docker:
+      memory: 2048
