@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.1</version>
+		<version>3.0.5</version>
 	</parent>
 
 	<groupId>tech.go9</groupId>
@@ -44,7 +44,7 @@
 	<properties>
 
 		<!-- project properties -->
-		<java.version>19</java.version>
+		<java.version>20</java.version>
 
 		<!-- docker-maven-plugin -->
 		<docker-maven-plugin.skip>false</docker-maven-plugin.skip>
@@ -161,19 +161,24 @@
 						<configuration>
 							<artifacts>
 								<artifact>
-									<file>${project.build.directory}/bitbucket-pipelines-lib-small-v1.yml</file>
-									<classifier>bitbucket-pipelines-lib-small-v1</classifier>
-									<type>yml</type>
-								</artifact>
-								<artifact>
-									<file>${project.build.directory}/bitbucket-pipelines-service-small-v1.yml</file>
-									<classifier>bitbucket-pipelines-service-small-v1</classifier>
-									<type>yml</type>
-								</artifact>
-								<artifact>
 									<file>${project.build.directory}/build.sh</file>
 									<classifier>build</classifier>
 									<type>sh</type>
+								</artifact>
+								<artifact>
+									<file>${project.build.directory}/build.sh</file>
+									<classifier>deploy</classifier>
+									<type>sh</type>
+								</artifact>
+								<artifact>
+									<file>${project.build.directory}/github-workflow-lib-small-v1.yml</file>
+									<classifier>github-workflow-lib-small-v1</classifier>
+									<type>yml</type>
+								</artifact>
+								<artifact>
+									<file>${project.build.directory}/github-workflow-service-small-v1.yml</file>
+									<classifier>github-workflow-service-small-v1</classifier>
+									<type>yml</type>
 								</artifact>
 								<artifact>
 									<file>${project.build.directory}/terragrunt.hcl</file>

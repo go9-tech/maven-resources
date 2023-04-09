@@ -53,7 +53,7 @@ RUN apt-get update \
 
 
 # Maven
-ARG MAVEN_VERSION=3.8.7
+ARG MAVEN_VERSION=3.9.1
 #ARG MAVEN_SHA=0ec48eb515d93f8515d4abe465570dfded6fa13a3ceb9aab8031428442d9912ec20f066b2afbf56964ffe1ceb56f80321b50db73cf77a0e2445ad0211fb8e38d
 ARG MAVEN_BASE_URL=https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries
 
